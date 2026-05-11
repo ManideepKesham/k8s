@@ -9,19 +9,19 @@ spec:
   selector:
     matchLabels:
       app: yellow
-    strategy:
-      type: RollingUpdate
-      rollingUpdate:
-        maxSurge: 25%
-        maxUnavailable: 25%
-    template: 
-      metadata: 
-        name: yellowpods
-        labels:
-          app: yellow
-      spec:
-        containers:
-          - name: yellow-containers
-            image: longflew/ingress:YELLOWPAGE
-            ports:
-              - containerPort: 80
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 25%
+  template: 
+    metadata: 
+      name: yellowpods
+      labels:
+      app: yellow
+    spec:
+      containers:
+        - name: yellow-containers
+          image: longflew/ingress:YELLOWPAGE
+          ports:
+            - containerPort: 80
