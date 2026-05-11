@@ -18,7 +18,7 @@ spec:
     metadata: 
       name: yellowpods
       labels:
-      app: yellow
+        app: yellow
     spec:
       containers:
         - name: yellow-containers
