@@ -1,0 +1,40 @@
+---- pending pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podlifecycle
+spec:
+  containers:
+    - name: demo
+      image: nginx:mani
+      ports:
+        - containerPort: 80
+
+
+---- pod running
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podlifecycle
+spec:
+  containers:
+    - name: demo
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+
+
+---- succeded pod all pods are terminated
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podlifecycle
+spec:
+  containers:
+    - name: demo
+      image: nginx
+      ports:
+        - containerPort: 80
+      command: ["echo","exit","0"]
+~                                
+~                                

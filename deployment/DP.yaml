@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydp-yellow
+spec:
+  minReadySeconds: 5
+  replicas: 5
+  selector:
+    matchLabels:
+      app: yellow
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+    template: 
+      metadata: 
+        name: yellowpods
+        labels:
+          app: yellow
+      spec:
+        containers:
+          - name: yellow-containers
+            image: longflew/ingress:YELLOWPAGE
+            ports:
+              - containerPort: 80

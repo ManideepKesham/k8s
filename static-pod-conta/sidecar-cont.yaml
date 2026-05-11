@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: firstpod
+spec:
+  containers:
+    - name: my-main-container
+      image: nginx:1.29
+      ports: 
+        - containerPort: 80
+      name: sidecar-container
+      image: busybox
+      ports: 
+        - containerPort: 80
+      command: ["sh","-c","tail -f /var/log/nginx/access.log"]
