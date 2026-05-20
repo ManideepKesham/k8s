@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: myrs-pod
+spec:
+  minReadySeconds: 5
+  replicas: 5
+  selector:
+    matchExpressions:
+      - key: zomato-payment-app
+        operator: In
+        values:
+          - dev-pod
+  template:
+    metadata:
+      name: mypod
+      labels:
+        zomato-payment-app: dev-pod
+    spec:
+      containers:
+        - name: myblue-conatiners
+          image: longflew/ingress:BLUEPAGE
+          ports:
+            - containerPort: 80
+
